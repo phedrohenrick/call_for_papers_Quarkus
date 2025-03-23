@@ -58,4 +58,17 @@ public class PaperController {
         }
     }
 
+    @DELETE
+    @Path("/{id}")
+    public Response deletePaper(@PathParam("id") Long id){
+
+        try{
+            paperService.deletePaper(id);
+            return Response.ok().build();
+        }catch(Exception e){
+            return Response.serverError().build();
+        }
+
+    }
+
 }
