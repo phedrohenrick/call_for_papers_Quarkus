@@ -2,7 +2,9 @@ package org.br.callForPaper.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import org.br.callForPaper.dto.PaperDetailsDTO;
+import org.br.callForPaper.entity.PaperEntity;
 import org.br.callForPaper.repository.PaperRepository;
 
 import java.util.List;
@@ -31,8 +33,23 @@ public class PaperServiceImpl  implements PaperService{
 
 
     @Override
+    @Transactional
     public void createPaper(PaperDetailsDTO paperDetailsDTO) {
 
+        PaperEntity paperEntity = new PaperEntity();
+        paperEntity.setTitulo(paperDetailsDTO.getTitulo());
+        paperEntity.setEmail(paperDetailsDTO.getEmail());
+        paperEntity.setResumo(paperDetailsDTO.getResumo());
+        paperEntity.setNomeDoAutor(paperDetailsDTO.getNomeDoAutor());
+
+        try{
+
+            paperRepository.persist( paperEntity );
+
+        }catch (Exception e){
+            e.printStackTrace();
+            throw new RuntimeException("Error creating paper: " + e.getMessage(), e);
+        }
     }
 
     @Override
