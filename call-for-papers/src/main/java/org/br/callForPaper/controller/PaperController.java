@@ -1,10 +1,8 @@
 package org.br.callForPaper.controller;
 
 import jakarta.inject.Inject;
-import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
+import jakarta.validation.Valid;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import org.br.callForPaper.dto.PaperDetailsDTO;
@@ -32,6 +30,18 @@ public class PaperController {
             return Response.status(Response.Status.NO_CONTENT).build();
         }
         return Response.ok(papersList).build();
+    }
+    @POST
+    public Response createPaper(@Valid PaperDetailsDTO paperDetailsDTO){
+
+        LOG.info(" -- Recebendo Palestra -- ");
+
+        try{
+            paperService.createPaper(paperDetailsDTO);
+            return Response.ok().build();
+        }catch (Exception e){
+            return Response.serverError().build();
+        }
     }
 
 }
