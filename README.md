@@ -14,7 +14,7 @@
 Antes de começar, você precisa ter instalado em sua máquina:
 - [Docker](https://www.docker.com/products/docker-desktop)
 - [Java 21](https://jdk.java.net/21/)
-- [Maven]([https://maven.apache.org/](https://maven.apache.org/install.html)) 
+- [Maven](https://maven.apache.org/install.html)
 
 ## Configuração do Ambiente
 
