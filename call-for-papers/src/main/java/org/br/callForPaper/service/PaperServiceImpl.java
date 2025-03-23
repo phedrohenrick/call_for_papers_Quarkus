@@ -2,6 +2,7 @@ package org.br.callForPaper.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.br.callForPaper.dto.PaperDetailsDTO;
 import org.br.callForPaper.entity.PaperEntity;
@@ -53,7 +54,21 @@ public class PaperServiceImpl  implements PaperService{
     }
 
     @Override
+    @Transactional
     public void updatePaper(Long id, PaperDetailsDTO paperDetailsDTO) {
+
+        PaperEntity paperEntity = paperRepository.findById(id);
+
+        if(paperEntity != null){
+            paperEntity.setTitulo(paperDetailsDTO.getTitulo());
+            paperEntity.setEmail(paperDetailsDTO.getEmail());
+            paperEntity.setResumo(paperDetailsDTO.getResumo());
+            paperEntity.setNomeDoAutor(paperDetailsDTO.getNomeDoAutor());
+            paperRepository.persist(paperEntity);
+            paperRepository.flush();
+        } else {
+            throw new EntityNotFoundException();
+        }
 
     }
 
