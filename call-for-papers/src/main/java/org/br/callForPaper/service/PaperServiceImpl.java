@@ -73,7 +73,8 @@ public class PaperServiceImpl  implements PaperService{
     }
 
     @Override
+    @Transactional
     public void deletePaper(Long id) {
-
+        paperRepository.deleteById(id);
     }
 }
