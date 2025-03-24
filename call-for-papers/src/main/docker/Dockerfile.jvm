@@ -1,14 +1,28 @@
-# Usa uma imagem base leve do OpenJDK 21
-FROM eclipse-temurin:21-jdk
-
-# Define o diretório de trabalho dentro do container
+# === Stage 1: Build ===
+FROM maven:3.8.6-openjdk-21 AS build
 WORKDIR /app
 
-# Copia o JAR gerado para o container
-COPY target/*-runner.jar /app/app.jar
+# Copia os arquivos de configuração do Maven e o pom.xml
+COPY pom.xml ./
 
-# Expondo a porta do Quarkus
+# Baixa as dependências (cache para acelerar builds futuros)
+RUN mvn dependency:go-offline
+
+# Copia o restante do código-fonte
+COPY src ./src
+
+# Compila o projeto e gera o jar "runner"
+RUN mvn clean package -DskipTests
+
+# === Stage 2: Runtime ===
+FROM eclipse-temurin:21-jdk
+WORKDIR /app
+
+# Copia o jar gerado na etapa de build para a imagem final
+COPY --from=build /app/target/*-runner.jar app.jar
+
+# Expondo a porta configurada no Quarkus
 EXPOSE 8080
 
 # Comando para rodar a aplicação
-CMD ["java", "-jar", "/app/app.jar"]
+CMD ["java", "-jar", "app.jar"]
