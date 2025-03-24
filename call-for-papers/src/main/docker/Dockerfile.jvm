@@ -3,13 +3,13 @@ FROM maven:3.8.6-openjdk-21 AS build
 WORKDIR /app
 
 # Copia os arquivos de configuração do Maven e o pom.xml
-COPY pom.xml ./
+COPY call-for-papers/pom.xml ./
 
 # Baixa as dependências (cache para acelerar builds futuros)
 RUN mvn dependency:go-offline
 
 # Copia o restante do código-fonte
-COPY src ./src
+COPY call-for-papers/src ./src
 
 # Compila o projeto e gera o jar "runner"
 RUN mvn clean package -DskipTests
