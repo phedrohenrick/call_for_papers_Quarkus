@@ -2,16 +2,12 @@
 FROM maven:3.8.6-openjdk-21 AS build
 WORKDIR /app
 
-# Copia os arquivos de configuração do Maven e o pom.xml
+# Copia apenas o pom.xml da pasta "call-for-papers"
 COPY call-for-papers/pom.xml ./
-
-# Baixa as dependências (cache para acelerar builds futuros)
-RUN mvn dependency:go-offline
-
-# Copia o restante do código-fonte
+# Copia o diretório src da pasta "call-for-papers"
 COPY call-for-papers/src ./src
 
-# Compila o projeto e gera o jar "runner"
+# Baixa as dependências e compila o projeto (gera o jar "-runner.jar")
 RUN mvn clean package -DskipTests
 
 # === Stage 2: Runtime ===
@@ -21,8 +17,6 @@ WORKDIR /app
 # Copia o jar gerado na etapa de build para a imagem final
 COPY --from=build /app/target/*-runner.jar app.jar
 
-# Expondo a porta configurada no Quarkus
 EXPOSE 8080
 
-# Comando para rodar a aplicação
 CMD ["java", "-jar", "app.jar"]
