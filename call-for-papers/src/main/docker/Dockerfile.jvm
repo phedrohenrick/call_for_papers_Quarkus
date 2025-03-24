@@ -9,7 +9,7 @@ COPY call-for-papers/pom.xml ./
 RUN mvn dependency:go-offline
 
 # Copia o restante do código-fonte
-COPY src ./src
+COPY ../.. ./src
 
 # Compila o projeto e gera o jar "runner"
 RUN mvn clean package -DskipTests
