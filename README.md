@@ -103,7 +103,7 @@ https://seu-projeto-production.up.railway.app/rota_específica
 ###  Deletar um recurso  
 **[DELETE]** `/api/paper/{id}`  
 
-## 📌 Como testar a aplicação?
+## 📌 Como testar a aplicação? (exemplo de submissão)
 Foi desenvolvido com **React.js** um client para consumos mais fácil e intuitivo da aplicação, de forma mais intuitiva e amigável ao usuário, pode ser usado para interação com ela;
 
 ![Exemplo client](https://github.com/user-attachments/assets/cfc005cd-504a-4a66-bae7-0a9df34a785a)
@@ -114,9 +114,10 @@ Para ter mais informações rápidas de download e de strat do frontend, acesse:
 
 Ao rodar o frontend localmente, ele estará configrado para acessar a aplicação que esta em produção na nuvem. Ou seja ele concta automaticamente com  `https://hearty-patience-production.up.railway.app/<rota_especifica>` e esta pronto para testes.
 
-- **Outras Opções**:
+- **Uma outra Opção**:
  Usar uma ferramenta client como o [postman](https://www.postman.com/) ou [insomnia](https://insomnia.rest/) para Enviar requisições HTTP (GET, POST, PUT, DELETE), Configurar cabeçalhos, parâmetros e corpo da requisição, testar respostas da API e validar os dados retornados.
 
+! Lembrando que nesse caso é necessário configurar o arquivo application.properties para se conectar ao banco de dados que estar rodando em docker com postgres.
 
 | Ambiente  | URL de Acesso                        |
 |-----------|--------------------------------------|
