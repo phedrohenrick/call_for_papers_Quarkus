@@ -107,7 +107,7 @@ Acesse para ter mais informações de download.
 | Ambiente  | URL de Acesso                        |
 |-----------|--------------------------------------|
 | **Local** | `http://localhost:8080`             |
-| **Nuvem** | `[https://seu-app.railway.app](https://hearty-patience-production.up.railway.app/api/paper/)`       |
+| **Nuvem** | `https://hearty-patience-production.up.railway.app/api/paper/`       |
 
 Caso queira testar sem precisar rodá-la localmente, basta usar um client (postman, por exemplo), configurando a url de acesso na nuvem  https://hearty-patience-production.up.railway.app/api/paper/  e seguir a configurações dos endpoints específicos acima.
 
