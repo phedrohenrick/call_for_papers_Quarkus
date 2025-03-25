@@ -14,6 +14,7 @@ import lombok.extern.jackson.Jacksonized;
 @AllArgsConstructor
 public class PaperDetailsDTO {
 
+
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private Long id;
 
@@ -32,4 +33,12 @@ public class PaperDetailsDTO {
     @NotBlank(message = "o conteúdo é obrigatório")
     @JsonProperty("email")
     private String email;
+
+    public PaperDetailsDTO( String titulo, String resumo, String nome_do_autor, String email) {
+        setTitulo(titulo);
+        setResumo(resumo);
+        setNomeDoAutor(nome_do_autor);
+        setEmail(email);
+    }
+
 }

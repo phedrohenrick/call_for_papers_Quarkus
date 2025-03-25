@@ -36,12 +36,9 @@ public class PaperController {
 
         LOG.info(" -- Recebendo Palestra -- ");
 
-        try{
             paperService.createPaper(paperDetailsDTO);
-            return Response.ok().build();
-        }catch (Exception e){
-            return Response.serverError().build();
-        }
+            return Response.status(Response.Status.CREATED).entity(paperDetailsDTO).build();
+
     }
 
     @PUT
