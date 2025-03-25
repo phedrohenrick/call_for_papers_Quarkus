@@ -58,7 +58,6 @@ A API estará disponível por padrão em http://localhost:8080.
 ## 📌 Deploy na Nuvem  
 A API foi implantada no **Railway** e está acessível em:  
 🔗 **https://hearty-patience-production.up.railway.app/api/paper/list**  
-
 Ou seja, se consegue acessá-la com por um client (postman, por exemplo) tanto localmente quanto via web.
 ---
 ## 📌 Endpoints da API  
