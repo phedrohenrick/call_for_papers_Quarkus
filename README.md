@@ -29,7 +29,7 @@ cd SEU_REPOSITORIO
 e abra na IDE De sua preferência (IntelliJ, VsCode, Eclipse), abra a pasta do projeto (/call-for-papers);
 
 ### 📌Passo 2: Subindo o container do PostgreSQL com Docker
-O arquivo (src/main/docker) docker-compose.yml está configurado para rodar um container do PostgreSQL na porta 5434. Para iniciar o banco de dados, entre na pasta do arquivo, e execute:
+O arquivo docker-compose.yml (src/main/docker/docker-compose.yml) está configurado para rodar um container do PostgreSQL na porta 5434. Para iniciar o banco de dados, entre na pasta onde está o arquivo, e execute:
 
 ``` bash
 docker-compose up -d
@@ -57,7 +57,7 @@ A API estará disponível por padrão em http://localhost:8080.
 ---
 
 ## 📌 Deploy na Nuvem  
-A API foi implantada no **Railway**, ou seja, para tornar mais fácil o teste é possível visualizar todos os itens adicionados por mim. (mais informações sobre url de teste a baixo).
+A API foi implantada no **Railway**, ou seja, para tornar mais fácil o teste é possível visualizar todos os itens adicionados por mim. 
 
 ### 🚀 Infraestrutura
 - **Backend:** Deploy do código Quarkus com o github.
