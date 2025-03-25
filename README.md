@@ -133,8 +133,3 @@ Convido você a conhecer mais sobre meus  outros projetos que desenvolvi. Acesse
 🔗[Meu Portfólio](https://www.phedrohenrick-portifolio.com.br/)
 
 Fique à vontade para explorar, dar feedbacks e entrar em contato! 🚀
-
-## 📌 Licença  
-Este projeto está sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
----
-
