@@ -102,8 +102,10 @@ https://seu-projeto-production.up.railway.app/rota_específica
 ###  Deletar um recurso  
 **[DELETE]** `/api/paper/{id}`  
 
-## 📌 Consumo pelo Frontend - Client 
+## 📌 Como testar a aplicação?
 Foi desenvolvido com **React.js** um client para consumos mais fácil e intuitivo da aplicação, de forma mais intuitiva e amigável ao usuário, pode ser usado para interação com ela;
+
+![Exemplo]((https://ibb.co/Pvf34FbF))
 
 Ele está disponível no seguinte repositório:  
 
