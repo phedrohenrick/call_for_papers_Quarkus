@@ -57,7 +57,7 @@ A API estará disponível por padrão em http://localhost:8080.
 ---
 
 ## 📌 Deploy na Nuvem  
-A API foi implantada no **Railway**, ou seja, para tornar mais fácil o teste é possível visualizar todos os itens adicionados por mim. 
+A API foi implantada no Railway. Para facilitar o teste de funcionamento, você pode enviar requisições diretamente pelas rotas específicas listadas abaixo, acessando os endpoints. Alternativamente, também é possível baixar o código frontend, oferecendo uma interface mais amigável e intuitiva para interação com a API.
 
 ### 🚀 Infraestrutura
 - **Backend:** Deploy do código Quarkus com o github.
