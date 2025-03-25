@@ -111,8 +111,10 @@ Para ter mais informações rápidas de download e de strat do frontend, acesse:
 
 🔗 ([DOWNLOAD DO FRONTEND](https://github.com/phedrohenrick/reactJS_desafioCFP_client))
 
+Ao rodar o frontend localmente, ele estará configrado para acessar a aplicação que esta em produção na nuvem. Ou seja ele concta automaticamente com  `https://hearty-patience-production.up.railway.app/<rota_especifica>` e esta pronto para testes.
 
-## 📌 Ambiente de Produção vs. Local  
+- **Outras Opções**:
+ Usar uma ferramenta client como o [postman](https://www.postman.com/) ou [insomnia](https://insomnia.rest/) para Enviar requisições HTTP (GET, POST, PUT, DELETE), Configurar cabeçalhos, parâmetros e corpo da requisição, testar respostas da API e validar os dados retornados.
 
 
 | Ambiente  | URL de Acesso                        |
