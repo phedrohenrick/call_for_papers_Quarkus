@@ -132,5 +132,3 @@ Este projeto está licenciado sob a **MIT License**.
 
 ---
 
-📌 **Mantenha o README sempre atualizado com novas features!** 🚀
-
