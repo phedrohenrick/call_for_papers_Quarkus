@@ -105,13 +105,12 @@ https://seu-projeto-production.up.railway.app/rota_específica
 ## 📌 Como testar a aplicação?
 Foi desenvolvido com **React.js** um client para consumos mais fácil e intuitivo da aplicação, de forma mais intuitiva e amigável ao usuário, pode ser usado para interação com ela;
 
-![Exemplo]((https://ibb.co/Pvf34FbF))
+![Exemplo client](https://github.com/user-attachments/assets/0c6f4fb3-7702-46a0-980d-372641539b85)
 
-Ele está disponível no seguinte repositório:  
+Para ter mais informações rápidas de download e de strat do frontend, acesse:
 
 🔗 ([DOWNLOAD DO FRONTEND](https://github.com/phedrohenrick/reactJS_desafioCFP_client))
 
-Acesse para ter mais informações rápidas de download e de strat do frontend.
 
 ## 📌 Ambiente de Produção vs. Local  
 
@@ -119,15 +118,14 @@ Acesse para ter mais informações rápidas de download e de strat do frontend.
 | Ambiente  | URL de Acesso                        |
 |-----------|--------------------------------------|
 | **Local** | `http://localhost:8080`             |
-| **Nuvem** | `https://hearty-patience-production.up.railway.app/rota_especifica` |
+| **Nuvem** | `https://hearty-patience-production.up.railway.app/<rota_especifica>` |
 
 Caso queira testar sem precisar rodá-la localmente, basta usar um client (postman, por exemplo) e configurar com alguma dessas urls de conexão ou usar o proprio frontend local criado e já configurado para acesso remoto (da sessão acima);
 
----
 
 ## 📌 Autenticação 
 Esta api ainda não possui configuração de autenticação.
----
+
 
 ## 📌 Licença  
 Este projeto está licenciado sob a **MIT License**.  
