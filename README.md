@@ -26,6 +26,7 @@ Clone o repositório para o seu ambiente local:
 git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
 cd SEU_REPOSITORIO
 ```
+e abra na IDE De sua preferência (IntelliJ, VsCode, Eclipse) e abra a pasta do projeto (call-for-papers);
 
 ### 📌Passo 2: Subindo o container do PostgreSQL com Docker
 O arquivo (src/main/docker) docker-compose.yml está configurado para rodar um container do PostgreSQL na porta 5434. Para iniciar o banco de dados, entre na pasta do arquivo, e execute:
