@@ -1,68 +1,137 @@
-# call-for-papers
+# Documentação API
 
-This project uses Quarkus, the Supersonic Subatomic Java Framework.
+## 📌Tecnologias Utilizadas
+- **Quarkus**: Framework para Java utilizado para construir a API.
+- **PostgreSQL**: Banco de dados utilizado, executado dentro de um container Docker na porta `5434`.
+- **Docker**: Utilizado para containerizar o banco de dados PostgreSQL.
+- **RestEasy**: Framework para a construção de endpoints RESTful em Quarkus.
+- **Java 21**: Versão do Java utilizada no desenvolvimento da API.
+- **GitHub**: Repositório utilizado para controle de versão do código.
+- **Maven**: para gerenciar dependências e construir o projeto
 
-If you want to learn more about Quarkus, please visit its website: <https://quarkus.io/>.
+## 📌Pré-requisitos
 
-## Running the application in dev mode
+Antes de começar, você precisa ter instalado em sua máquina:
+- [Docker](https://www.docker.com/products/docker-desktop)
+- [Java 21](https://jdk.java.net/21/)
+- [Maven](https://maven.apache.org/install.html)
 
-You can run your application in dev mode that enables live coding using:
+## Configuração do Ambiente
 
-```shell script
-./mvnw quarkus:dev
+### 📌Passo 1: Clonando o repositório
+
+Clone o repositório para o seu ambiente local:
+
+```bash
+git clone https://github.com/SEU_USUARIO/SEU_REPOSITORIO.git
+cd SEU_REPOSITORIO
+```
+e abra na IDE De sua preferência (IntelliJ, VsCode, Eclipse), abra a pasta do projeto (/call-for-papers);
+
+### 📌Passo 2: Subindo o container do PostgreSQL com Docker
+O arquivo docker-compose.yml (src/main/docker/docker-compose.yml) está configurado para rodar um container do PostgreSQL na porta 5434. Para iniciar o banco de dados, entre na pasta onde está o arquivo, e execute:
+
+``` bash
+docker-compose up -d
+```
+Isso iniciará o container do PostgreSQL e deixará o banco de dados disponível para conexão na porta 5434.
+
+### 📌Passo 3: Configuração da conexão com o banco de dados
+Verifique se as configurações de conexão com o banco de dados estão corretas no arquivo application.properties dentro do seu projeto Quarkus. A configuração deve ter as suas credenciais de conexão (no caso do banco de dados do docker-file é o "callforpaperdb"):
+
+``` java
+quarkus.datasource.db-kind=postgresql
+quarkus.datasource.username=postgres
+quarkus.datasource.password=sua-senha
+quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5434/callforpaperdb
+``` 
+
+### 📌Passo 4: Construir e rodar a API com Quarkus
+Execute o seguinte comando para compilar e rodar a API localmente em modo de desenvolvimento:
+
+``` bash
+mvn quarkus:dev
+```
+A API estará disponível por padrão em http://localhost:8080.
+
+---
+
+## 📌 Deploy na Nuvem
+A API foi implantada no Railway. Para facilitar o teste de funcionamento, você pode enviar requisições diretamente pelas rotas específicas listadas abaixo, acessando os endpoints. Alternativamente, também é possível baixar o código frontend, oferecendo uma interface mais amigável e intuitiva para interação com a API.
+
+### 🚀 Infraestrutura
+- **Backend:** Deploy do código Quarkus com o github.
+- **Banco de Dados:** Um container do PostgreSQL configurado no próprio Railway, garantindo integração direta com a API.
+- **Rede:** A API está acessível publicamente por meio de uma URL gerada pelo Railway.
+
+### 🌐 URL da API
+A API pode ser acessada publicamente através da seguinte URL:
+
+```
+https://seu-projeto-production.up.railway.app/rota_específica
+```
+---
+## 📌 Endpoints da API
+### Criar um novo recurso
+**[POST]** `/api/paper/`
+```json
+{
+  "titulo": "Exemplo de Paper",
+  "resumo": "Resumo do artigo",
+  "nomeDoAutor": "Fulano de Tal",
+  "email": "autor@email.com"
+}
 ```
 
-> **_NOTE:_**  Quarkus now ships with a Dev UI, which is available in dev mode only at <http://localhost:8080/q/dev/>.
+###  Listar todos os recursos
+**[GET]** `/api/paper/list`
 
-## Packaging and running the application
+###  Buscar um recurso pelo ID
+**[GET]** `/api/paper/{id}`
 
-The application can be packaged using:
-
-```shell script
-./mvnw package
+###  Atualizar um recurso
+**[PUT]** `/api/paper/{id}`
+```json
+{
+  "titulo": "Título atualizado",
+  "resumo": "Resumo atualizado",
+  "nomeDoAutor": "Fulano de Tal",
+  "email": "autor@email.com"
+}
 ```
 
-It produces the `quarkus-run.jar` file in the `target/quarkus-app/` directory.
-Be aware that it’s not an _über-jar_ as the dependencies are copied into the `target/quarkus-app/lib/` directory.
+###  Deletar um recurso
+**[DELETE]** `/api/paper/{id}`
 
-The application is now runnable using `java -jar target/quarkus-app/quarkus-run.jar`.
+## 📌 Como testar a aplicação? (exemplo de submissão)
+Foi desenvolvido com **React.js** um client para consumos mais fácil e intuitivo da aplicação, de forma mais intuitiva e amigável ao usuário, pode ser usado para interação com ela;
 
-If you want to build an _über-jar_, execute the following command:
+![Exemplo client](https://github.com/user-attachments/assets/cfc005cd-504a-4a66-bae7-0a9df34a785a)
 
-```shell script
-./mvnw package -Dquarkus.package.jar.type=uber-jar
-```
+Para ter mais informações rápidas de download e de strat do frontend, acesse:
 
-The application, packaged as an _über-jar_, is now runnable using `java -jar target/*-runner.jar`.
+🔗 ([DOWNLOAD DO FRONTEND](https://github.com/phedrohenrick/reactJS_desafioCFP_client))
 
-## Creating a native executable
+Ao rodar o frontend localmente, ele estará configrado para acessar a aplicação que esta em produção na nuvem. Ou seja ele concta automaticamente com  `https://hearty-patience-production.up.railway.app/<rota_especifica>` e esta pronto para testes.
 
-You can create a native executable using:
+- **Uma outra Opção**:
+  Usar uma ferramenta client como o [postman](https://www.postman.com/) ou [insomnia](https://insomnia.rest/) para Enviar requisições HTTP (GET, POST, PUT, DELETE), Configurar cabeçalhos, parâmetros e corpo da requisição, testar respostas da API e validar os dados retornados.
 
-```shell script
-./mvnw package -Dnative
-```
+! Lembrando que nesse caso é necessário configurar o arquivo application.properties para se conectar ao banco de dados que estar rodando em docker com postgres.
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+| Ambiente  | URL de Acesso                        |
+|-----------|--------------------------------------|
+| **Local** | `http://localhost:8080`             |
+| **Nuvem** | `https://hearty-patience-production.up.railway.app/<rota_especifica>` |
 
-```shell script
-./mvnw package -Dnative -Dquarkus.native.container-build=true
-```
 
-You can then execute your native executable with: `./target/call-for-papers-1.0.0-SNAPSHOT-runner`
+## 📌 Autenticação
+Esta api ainda não possui configuração de autenticação.
 
-If you want to learn more about building native executables, please consult <https://quarkus.io/guides/maven-tooling>.
+## 🌟 Conheça Meu Portfólio
 
-## Related Guides
+Convido você a conhecer mais sobre meus  outros projetos que desenvolvi. Acesse meu portfólio e veja minhas criações!
 
-- REST resources for Hibernate ORM with Panache ([guide](https://quarkus.io/guides/rest-data-panache)): Generate Jakarta REST resources for your Hibernate Panache entities and repositories
-- JDBC Driver - PostgreSQL ([guide](https://quarkus.io/guides/datasource)): Connect to the PostgreSQL database via JDBC
+🔗[Meu Portfólio](https://www.phedrohenrick-portifolio.com.br/)
 
-## Provided Code
-
-### REST Data with Panache
-
-Generating Jakarta REST resources with Panache
-
-[Related guide section...](https://quarkus.io/guides/rest-data-panache)
-
+Fique à vontade para explorar, dar feedbacks e entrar em contato! 🚀
