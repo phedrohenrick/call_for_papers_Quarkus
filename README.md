@@ -122,7 +122,7 @@ Ao rodar o frontend localmente, ele estará configrado para acessar a aplicaçã
 | **Local** | `http://localhost:8080`             |
 | **Nuvem** | `https://hearty-patience-production.up.railway.app/<rota_especifica>` |
 
-Caso queira testar sem precisar rodá-la localmente, basta usar um client (postman, por exemplo) e configurar com alguma dessas urls de conexão ou usar o proprio frontend local criado e já configurado para acesso remoto (da sessão acima);
+
 
 
 ## 📌 Autenticação 
