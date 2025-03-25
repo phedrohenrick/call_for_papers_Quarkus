@@ -36,13 +36,13 @@ docker-compose up -d
 Isso iniciará o container do PostgreSQL e deixará o banco de dados disponível para conexão na porta 5434.
 
 ### 📌Passo 3: Configuração da conexão com o banco de dados
-Verifique se as configurações de conexão com o banco de dados estão corretas no arquivo application.properties dentro do seu projeto Quarkus. A configuração deve ter as suas credenciais de conexão:
+Verifique se as configurações de conexão com o banco de dados estão corretas no arquivo application.properties dentro do seu projeto Quarkus. A configuração deve ter as suas credenciais de conexão (no caso do banco de dados do docker-file é o "callforpaperdb"):
 
 ``` java
 quarkus.datasource.db-kind=postgresql
 quarkus.datasource.username=postgres
 quarkus.datasource.password=sua-senha
-quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5434/seu_banco
+quarkus.datasource.jdbc.url=jdbc:postgresql://localhost:5434/callforpaperdb
 ``` 
 
 ### 📌Passo 4: Construir e rodar a API com Quarkus
