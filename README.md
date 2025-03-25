@@ -123,14 +123,18 @@ Ao rodar o frontend localmente, ele estará configrado para acessar a aplicaçã
 | **Nuvem** | `https://hearty-patience-production.up.railway.app/<rota_especifica>` |
 
 
-
-
 ## 📌 Autenticação 
 Esta api ainda não possui configuração de autenticação.
 
+## 🌟 Conheça Meu Portfólio
+
+Convido você a conhecer mais sobre meus  outros projetos que desenvolvi. Acesse meu portfólio e veja minhas criações!
+
+🔗[Meu Portfólio](https://www.phedrohenrick-portifolio.com.br/)
+
+Fique à vontade para explorar, dar feedbacks e entrar em contato! 🚀
 
 ## 📌 Licença  
-Este projeto está licenciado sob a **MIT License**.  
-
+Este projeto está sob a licença MIT - veja o arquivo LICENSE para mais detalhes.
 ---
 
