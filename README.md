@@ -56,10 +56,19 @@ A API estará disponível por padrão em http://localhost:8080.
 ---
 
 ## 📌 Deploy na Nuvem  
-A API foi implantada no **Railway** e está acessível em:  
-🔗 **https://hearty-patience-production.up.railway.app/api/paper/list**  
+A API foi implantada no **Railway**, ou seja, para tornar mais fácil o teste é possível visualizar todos os itens adicionados por mim. (mais informações sobre url de teste a baixo).
 
-Ou seja, se consegue acessá-la com por um client (postman, por exemplo) tanto localmente quanto via web.
+### 🚀 Infraestrutura
+- **Backend:** Deploy do código Quarkus com o github.
+- **Banco de Dados:** Um container do PostgreSQL configurado no próprio Railway, garantindo integração direta com a API.
+- **Rede:** A API está acessível publicamente por meio de uma URL gerada pelo Railway.
+
+### 🌐 URL da API
+A API pode ser acessada publicamente através da seguinte URL:
+
+```
+https://seu-projeto-production.up.railway.app/rota_específica
+```
 ---
 ## 📌 Endpoints da API  
 ### Criar um novo recurso  
@@ -93,22 +102,24 @@ Ou seja, se consegue acessá-la com por um client (postman, por exemplo) tanto l
 ###  Deletar um recurso  
 **[DELETE]** `/api/paper/{id}`  
 
-## 📌 Consumo pelo Frontend  
-O cliente frontend foi desenvolvido com **React.js** e pode ser utilizado para interagir com a API.  
+## 📌 Consumo pelo Frontend - Client 
+Foi desenvolvido com **React.js** um client para consumos mais fácil e intuitivo da aplicação, de forma mais intuitiva e amigável ao usuário, pode ser usado para interação com ela;
+
 Ele está disponível no seguinte repositório:  
 
-[🔗 ** https://hearty-patience-production.up.railway.app/api/paper/list
+🔗 ([DOWNLOAD DO FRONTEND](https://github.com/phedrohenrick/reactJS_desafioCFP_client))
 
-Acesse para ter mais informações de download.
+Acesse para ter mais informações rápidas de download e de strat do frontend.
 
 ## 📌 Ambiente de Produção vs. Local  
+
 
 | Ambiente  | URL de Acesso                        |
 |-----------|--------------------------------------|
 | **Local** | `http://localhost:8080`             |
-| **Nuvem** | `https://hearty-patience-production.up.railway.app/api/paper/`       |
+| **Nuvem** | `https://hearty-patience-production.up.railway.app/rota_especifica` |
 
-Caso queira testar sem precisar rodá-la localmente, basta usar um client (postman, por exemplo), configurando a url de acesso na nuvem  https://hearty-patience-production.up.railway.app/api/paper/  e seguir a configurações dos endpoints específicos acima.
+Caso queira testar sem precisar rodá-la localmente, basta usar um client (postman, por exemplo) e configurar com alguma dessas urls de conexão ou usar o proprio frontend local criado e já configurado para acesso remoto (da sessão acima);
 
 ---
 
@@ -122,6 +133,4 @@ Este projeto está licenciado sob a **MIT License**.
 ---
 
 📌 **Mantenha o README sempre atualizado com novas features!** 🚀
-
-
 
