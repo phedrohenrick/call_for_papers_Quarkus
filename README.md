@@ -105,7 +105,7 @@ https://seu-projeto-production.up.railway.app/rota_específica
 ## 📌 Como testar a aplicação?
 Foi desenvolvido com **React.js** um client para consumos mais fácil e intuitivo da aplicação, de forma mais intuitiva e amigável ao usuário, pode ser usado para interação com ela;
 
-![Exemplo client](https://github.com/user-attachments/assets/0c6f4fb3-7702-46a0-980d-372641539b85)
+![Exemplo client](https://github.com/user-attachments/assets/cfc005cd-504a-4a66-bae7-0a9df34a785a)
 
 Para ter mais informações rápidas de download e de strat do frontend, acesse:
 
