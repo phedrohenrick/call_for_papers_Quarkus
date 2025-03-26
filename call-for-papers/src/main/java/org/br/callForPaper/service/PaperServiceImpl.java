@@ -75,6 +75,12 @@ public class PaperServiceImpl  implements PaperService{
     @Override
     @Transactional
     public void deletePaper(Long id) {
+        PaperEntity paperEntity = paperRepository.findById(id);
+
+        if (paperEntity == null) {
+            throw new WebApplicationException("O id " + id + " nao existe.", Response.Status.NOT_FOUND);
+        }
+
         paperRepository.deleteById(id);
     }
 }
