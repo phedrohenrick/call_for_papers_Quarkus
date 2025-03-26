@@ -49,8 +49,13 @@ public class PaperController {
     @Path("update/{id}")
     public Response updatePaper(@PathParam("id") Long id, @Valid PaperDetailsDTO paperDetailsDTO){
 
-            paperService.updatePaper(id, paperDetailsDTO);
-            return Response.ok(paperDetailsDTO).build();
+           try {
+               paperService.updatePaper(id, paperDetailsDTO);
+               return Response.ok(paperDetailsDTO).build();
+           }catch (WebApplicationException e){
+               return Response.status(e.getResponse().getStatus()).entity(e.getMessage()).build();
+           }
+
 
     }
     @DELETE
