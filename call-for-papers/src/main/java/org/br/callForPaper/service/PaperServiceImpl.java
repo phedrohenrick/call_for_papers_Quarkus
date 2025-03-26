@@ -2,7 +2,6 @@ package org.br.callForPaper.service;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.Response;
@@ -54,10 +53,9 @@ public class PaperServiceImpl  implements PaperService{
         PaperEntity paperEntity = paperRepository.findById(id);
 
         if(paperEntity != null){
-
             buildAndSaveNewPaper(paperDetailsDTO);
         } else {
-            throw new EntityNotFoundException();
+            throw new WebApplicationException("A submissão que deseja editar não existe", Response.Status.NOT_FOUND);
         }
 
     }

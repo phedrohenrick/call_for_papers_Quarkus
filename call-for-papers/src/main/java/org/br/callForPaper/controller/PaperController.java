@@ -27,7 +27,7 @@ public class PaperController {
         List<PaperDetailsDTO> papersList = paperService.listPapers();
 
         if(papersList.isEmpty()){
-            return Response.status(Response.Status.NO_CONTENT).build();
+            return Response.status (Response.Status.NO_CONTENT).build();
         }
         return Response.ok(papersList).build();
     }
@@ -54,8 +54,6 @@ public class PaperController {
 
             paperService.deletePaper(id);
             return Response.ok().build();
-
-
     }
 
 }
