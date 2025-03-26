@@ -40,19 +40,13 @@ public class PaperController {
             return Response.status(Response.Status.CREATED).entity(paperDetailsDTO).build();
 
     }
-
     @PUT
     @Path("update/{id}")
     public Response updatePaper(@PathParam("id") Long id, @Valid PaperDetailsDTO paperDetailsDTO){
 
-        try{
             paperService.updatePaper(id, paperDetailsDTO);
             return Response.ok(paperDetailsDTO).build();
 
-        }catch (Exception e){
-            LOG.info(" -- error -- ");
-            return Response.serverError().build();
-        }
     }
     @DELETE
     @Path("/{id}")

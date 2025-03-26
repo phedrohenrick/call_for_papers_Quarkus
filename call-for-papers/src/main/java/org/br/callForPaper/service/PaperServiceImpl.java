@@ -39,16 +39,8 @@ public class PaperServiceImpl  implements PaperService{
     @Transactional
     public void createPaper(PaperDetailsDTO paperDetailsDTO) {
 
-        PaperEntity paperEntity = new PaperEntity();
-        paperEntity.setTitulo(paperDetailsDTO.getTitulo());
-        paperEntity.setEmail(paperDetailsDTO.getEmail());
-        paperEntity.setResumo(paperDetailsDTO.getResumo());
-        paperEntity.setNomeDoAutor(paperDetailsDTO.getNomeDoAutor());
-
         try{
-
-            paperRepository.persist( paperEntity );
-
+            buildAndSaveNewPaper(paperDetailsDTO);
         }catch (Exception e){
             e.printStackTrace();
             throw new RuntimeException("Error creating paper: " + e.getMessage(), e);
@@ -62,12 +54,8 @@ public class PaperServiceImpl  implements PaperService{
         PaperEntity paperEntity = paperRepository.findById(id);
 
         if(paperEntity != null){
-            paperEntity.setTitulo(paperDetailsDTO.getTitulo());
-            paperEntity.setEmail(paperDetailsDTO.getEmail());
-            paperEntity.setResumo(paperDetailsDTO.getResumo());
-            paperEntity.setNomeDoAutor(paperDetailsDTO.getNomeDoAutor());
-            paperRepository.persist(paperEntity);
-            paperRepository.flush();
+
+            buildAndSaveNewPaper(paperDetailsDTO);
         } else {
             throw new EntityNotFoundException();
         }
@@ -84,5 +72,21 @@ public class PaperServiceImpl  implements PaperService{
         }
 
         paperRepository.deleteById(id);
+    }
+
+    private void buildAndSaveNewPaper(PaperDetailsDTO proposalDetailsDTO) {
+        try{
+            PaperEntity paper = new PaperEntity();
+
+            paper.setTitulo(proposalDetailsDTO.getTitulo());
+            paper.setNomeDoAutor(proposalDetailsDTO.getNomeDoAutor());
+            paper.setResumo(proposalDetailsDTO.getResumo());
+            paper.setEmail(proposalDetailsDTO.getEmail());
+
+            paperRepository.persist(paper);
+        }catch(Exception e){
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
     }
 }
