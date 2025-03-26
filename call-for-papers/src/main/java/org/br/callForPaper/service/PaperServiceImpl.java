@@ -53,7 +53,12 @@ public class PaperServiceImpl  implements PaperService{
         PaperEntity paperEntity = paperRepository.findById(id);
 
         if(paperEntity != null){
-            buildAndSaveNewPaper(paperDetailsDTO);
+            paperEntity.setTitulo(paperDetailsDTO.getTitulo());
+            paperEntity.setNomeDoAutor(paperDetailsDTO.getNomeDoAutor());
+            paperEntity.setResumo(paperDetailsDTO.getResumo());
+            paperEntity.setEmail(paperDetailsDTO.getEmail());
+
+            paperRepository.persist(paperEntity);
         } else {
             throw new WebApplicationException("A submissão que deseja editar não existe", Response.Status.NOT_FOUND);
         }
