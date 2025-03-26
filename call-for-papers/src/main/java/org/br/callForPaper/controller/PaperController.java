@@ -31,15 +31,20 @@ public class PaperController {
         }
         return Response.ok(papersList).build();
     }
+
     @POST
     public Response createPaper(@Valid PaperDetailsDTO paperDetailsDTO){
 
         LOG.info(" -- Recebendo Palestra -- ");
+            try {
+                PaperDetailsDTO paper = paperService.createPaper(paperDetailsDTO);
+                return Response.status(Response.Status.CREATED).entity(paper).build();
 
-            paperService.createPaper(paperDetailsDTO);
-            return Response.status(Response.Status.CREATED).entity(paperDetailsDTO).build();
-
+            }catch (WebApplicationException e){
+                return Response.status(e.getResponse().getStatus()).entity(e.getMessage()).build();
+            }
     }
+
     @PUT
     @Path("update/{id}")
     public Response updatePaper(@PathParam("id") Long id, @Valid PaperDetailsDTO paperDetailsDTO){

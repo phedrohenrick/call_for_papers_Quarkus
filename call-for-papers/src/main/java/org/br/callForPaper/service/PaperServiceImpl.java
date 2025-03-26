@@ -36,12 +36,18 @@ public class PaperServiceImpl  implements PaperService{
 
     @Override
     @Transactional
-    public void createPaper(PaperDetailsDTO paperDetailsDTO) {
+    public PaperDetailsDTO createPaper(PaperDetailsDTO paperDetailsDTO) {
 
         try{
-            buildAndSaveNewPaper(paperDetailsDTO);
+            PaperEntity PaperEntityReturn = buildAndSaveNewPaper(paperDetailsDTO);
+            return PaperDetailsDTO.builder()
+                   .id(PaperEntityReturn.getId())
+                   .titulo(PaperEntityReturn.getTitulo())
+                   .email(PaperEntityReturn.getEmail())
+                   .nomeDoAutor(PaperEntityReturn.getNomeDoAutor())
+                   .resumo(PaperEntityReturn.getResumo()).build();
+
         }catch (Exception e){
-            e.printStackTrace();
             throw new RuntimeException("Error creating paper: " + e.getMessage(), e);
         }
     }
@@ -77,7 +83,7 @@ public class PaperServiceImpl  implements PaperService{
         paperRepository.deleteById(id);
     }
 
-    private void buildAndSaveNewPaper(PaperDetailsDTO proposalDetailsDTO) {
+    private PaperEntity buildAndSaveNewPaper(PaperDetailsDTO proposalDetailsDTO) {
         try{
             PaperEntity paper = new PaperEntity();
 
@@ -85,8 +91,8 @@ public class PaperServiceImpl  implements PaperService{
             paper.setNomeDoAutor(proposalDetailsDTO.getNomeDoAutor());
             paper.setResumo(proposalDetailsDTO.getResumo());
             paper.setEmail(proposalDetailsDTO.getEmail());
-
             paperRepository.persist(paper);
+            return paper;
         }catch(Exception e){
             e.printStackTrace();
             throw new RuntimeException(e);

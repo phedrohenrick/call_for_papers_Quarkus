@@ -8,7 +8,7 @@ public interface PaperService {
 
     List<PaperDetailsDTO> listPapers();
 
-    void createPaper(PaperDetailsDTO paperDetailsDTO);
+    PaperDetailsDTO createPaper(PaperDetailsDTO paperDetailsDTO);
 
     void updatePaper(Long id, PaperDetailsDTO paperDetailsDTO);
 
