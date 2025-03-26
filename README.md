@@ -134,4 +134,4 @@ Convido você a conhecer mais sobre meus  outros projetos que desenvolvi. Acesse
 
 🔗[Meu Portfólio](https://www.phedrohenrick-portifolio.com.br/)
 
-Fique à vontade para explorar, dar feedbacks e entrar em contato! 🚀
+Fique à vontade para explorar, dar feedbacks e entrar em contato!
