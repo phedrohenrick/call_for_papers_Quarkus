@@ -78,7 +78,7 @@ public class PaperServiceImpl  implements PaperService{
         PaperEntity paperEntity = paperRepository.findById(id);
 
         if (paperEntity == null) {
-            throw new WebApplicationException("O id " + id + " nao existe.", Response.Status.NOT_FOUND);
+            throw new NotFoundException("Paper não encontrado");
         }
 
         paperRepository.deleteById(id);
