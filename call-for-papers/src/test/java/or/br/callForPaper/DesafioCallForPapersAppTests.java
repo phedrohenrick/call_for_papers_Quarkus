@@ -6,15 +6,19 @@ import org.br.callForPaper.dto.PaperDetailsDTO;
 import org.junit.jupiter.api.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
 @QuarkusTest
 class DesafioCallForPapersAppTests {
-
+    private static final Logger log = LoggerFactory.getLogger(DesafioCallForPapersAppTests.class);
+     Long paperId;
 
     @Test
     void testCreatePaperSuccess() {
-        PaperDetailsDTO paper = new PaperDetailsDTO( "titulo", "resumo", "nomeDoAutor", "email");
+        PaperDetailsDTO paper = new PaperDetailsDTO( "titulo", "resumo", "nomeDoAutor", "email@email");
 
         given()
                 .contentType(ContentType.JSON)
