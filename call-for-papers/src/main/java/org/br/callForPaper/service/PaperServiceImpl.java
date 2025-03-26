@@ -4,6 +4,8 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
+import jakarta.ws.rs.WebApplicationException;
+import jakarta.ws.rs.core.Response;
 import org.br.callForPaper.dto.PaperDetailsDTO;
 import org.br.callForPaper.entity.PaperEntity;
 import org.br.callForPaper.repository.PaperRepository;
@@ -78,7 +80,7 @@ public class PaperServiceImpl  implements PaperService{
         PaperEntity paperEntity = paperRepository.findById(id);
 
         if (paperEntity == null) {
-            throw new NotFoundException("Paper não encontrado");
+            throw new WebApplicationException("O id " + id + " nao existe.", Response.Status.NOT_FOUND);
         }
 
         paperRepository.deleteById(id);
