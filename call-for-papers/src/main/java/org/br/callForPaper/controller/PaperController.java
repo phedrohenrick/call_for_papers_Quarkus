@@ -63,7 +63,9 @@ public class PaperController {
     public Response deletePaper(@PathParam("id") Long id){
 
             paperService.deletePaper(id);
-            return Response.ok().build();
+            return Response.status(Response.Status.NO_CONTENT).build();
+
+
     }
 
 }
