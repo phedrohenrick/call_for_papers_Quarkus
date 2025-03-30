@@ -30,11 +30,4 @@ public class PaperEntity {
     @Email(message = "E=mail inválido")
     private String email;
 
-
-    public PaperEntity(Long id, String titulo, String resumo, String nome_do_autor, String email) {
-        setTitulo(titulo);
-        setResumo(resumo);
-        setNomeDoAutor(nome_do_autor);
-        setEmail(email);
-    }
 }
