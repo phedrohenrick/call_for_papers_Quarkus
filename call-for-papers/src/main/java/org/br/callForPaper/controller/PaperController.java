@@ -1,5 +1,6 @@
 package org.br.callForPaper.controller;
 
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.*;
@@ -12,8 +13,9 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Path("/api/paper")
-@Produces(MediaType.APPLICATION_JSON)
-@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON) //serializa
+@Consumes(MediaType.APPLICATION_JSON) //desserializa
+
 public class PaperController {
 
     private static final Logger LOG = Logger.getLogger(PaperController.class.getName());
@@ -23,6 +25,7 @@ public class PaperController {
 
     @GET
     @Path("/list")
+    @RolesAllowed("user")
     public Response listPaper(){
         List<PaperDetailsDTO> papersList = paperService.listPapers();
 
@@ -32,7 +35,19 @@ public class PaperController {
         return Response.ok(papersList).build();
     }
 
+    @GET
+    @Path("/{id}")
+    @RolesAllowed("user")
+    public Response getPaper(@PathParam("id") Long id){
+        PaperDetailsDTO paper = paperService.getPaper(id);
+        if(paper == null){
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(paper).build();
+    }
+
     @POST
+    @RolesAllowed("user")
     public Response createPaper(@Valid PaperDetailsDTO paperDetailsDTO){
 
         LOG.info(" -- Recebendo Palestra -- ");
@@ -47,6 +62,7 @@ public class PaperController {
 
     @PUT
     @Path("update/{id}")
+    @RolesAllowed("user")
     public Response updatePaper(@PathParam("id") Long id, @Valid PaperDetailsDTO paperDetailsDTO){
 
            try {
@@ -60,6 +76,7 @@ public class PaperController {
     }
     @DELETE
     @Path("/{id}")
+    @RolesAllowed("user")
     public Response deletePaper(@PathParam("id") Long id){
 
             paperService.deletePaper(id);
